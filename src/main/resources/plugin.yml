@@ -1,0 +1,19 @@
+name: ArisTPA
+version: 1.0.7
+main: me.arismc.ArisTPA
+api-version: 1.20
+author: VennLMAO
+folia-supported: true
+commands:
+  tpa:
+    description: "Gửi yêu cầu dịch chuyển"
+  tpahere:
+    description: "Mời dịch chuyển"
+  tpaccept:
+    description: "Chấp nhận"
+  tpdeny:
+    description: "Từ chối"
+  tpacancel:
+    description: "Hủy yêu cầu"
+  tpauto:
+    description: "Tự động chấp nhận"
