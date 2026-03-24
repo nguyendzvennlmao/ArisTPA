@@ -1,0 +1,270 @@
+# ==========================================
+# CÀI ĐẶT DỊCH CHUYỂN & YÊU CẦU
+# ==========================================
+teleport:
+  countdown: 5
+  allowed-walk-range: 0.1
+  safe-teleport: false
+
+request:
+  expiration-time: 120
+  cooldown: 30
+  daily-limit: -1
+
+# ==========================================
+# ÂM THANH (SOUNDS)
+# ==========================================
+sounds:
+  gui-click: "UI_BUTTON_CLICK"
+  countdown-tick: "BLOCK_NOTE_BLOCK_CHIME"
+  teleport-success: "ENTITY_PLAYER_LEVELUP"
+  cancel-sound: "ENTITY_VILLAGER_NO"
+
+# ==========================================
+# THẾ GIỚI CẤM (BLACKLISTED WORLDS)
+# ==========================================
+blacklisted-worlds:
+  enabled: true
+  worlds:
+    - "world_nether"
+    - "world_the_end"
+    - "pvp_world"
+
+# ==========================================
+# CẤU HÌNH GUI (GIAO DIỆN)
+# ==========================================
+gui:
+  enabled: true
+  command-enabled: false
+  world-materials:
+    world: GRASS_BLOCK
+    world_nether: NETHERRACK
+    world_the_end: END_STONE
+
+request-gui:
+  name: "&8ᴄᴏɴғɪʀᴍ ʀᴇǫᴜᴇsᴛ"
+  rows: 3
+  icons:
+    cancel-icon:
+      slot: 10
+      material: RED_STAINED_GLASS_PANE
+      display-name: "&4ᴄᴀɴᴄᴇʟ"
+      lore:
+        - "&7Click to cancel this request"
+    location-icon:
+      slot: 12
+      display-name: "&aʟᴏᴄᴀᴛɪᴏɴ"
+      lore:
+        - "&f%world%"
+    player-icon:
+      slot: 13
+      material: PLAYER_HEAD
+      display-name: "&aᴘʟᴀʏᴇʀ"
+      lore:
+        - "&f%player%"
+    fly-icon:
+      slot: 14
+      material: FEATHER
+      display-name: "&aғʟʏɪɴɢ"
+      lore:
+        - "&f%is_flying%"
+    confirm-icon:
+      slot: 16
+      material: LIME_STAINED_GLASS_PANE
+      display-name: "&aᴄᴏɴғɪʀᴍ"
+      lore:
+        - "&7Click to send a teleport request"
+        - "&7to &f%player%"
+
+accept-gui:
+  name: "&8ᴀᴄᴄᴇᴘᴛ ʀᴇǫᴜᴇsᴛ"
+  rows: 3
+  icons:
+    cancel-icon:
+      slot: 10
+      material: RED_STAINED_GLASS_PANE
+      display-name: "&4ᴅᴇɴʏ"
+      lore:
+        - "&7Click to deny this request"
+    location-icon:
+      slot: 12
+      display-name: "&aʟᴏᴄᴀᴛɪᴏɴ"
+      lore:
+        - "&f%world%"
+    player-icon:
+      slot: 13
+      material: PLAYER_HEAD
+      display-name: "&aᴘʟᴀʏᴇʀ"
+      lore:
+        - "&f%player%"
+    fly-icon:
+      slot: 14
+      material: FEATHER
+      display-name: "&aғʟʏɪɴɢ"
+      lore:
+        - "&f%is_flying%"
+    confirm-icon:
+      slot: 16
+      material: LIME_STAINED_GLASS_PANE
+      display-name: "&aᴀᴄᴄᴇᴘᴛ"
+      lore:
+        - "&7Click to accept teleport request"
+        - "&7from &f%player%"
+
+# ==========================================
+# TIN NHẮN (MESSAGES) - Y CHANG BẠN YÊU CẦU
+# ==========================================
+messages:
+  prefix: ""
+  
+  player-not-found: "&cPlayer &e%player% &cis not online!"
+  player-not-found-actionbar: "&cPlayer &e%player% &cis not online!"
+
+  self-teleport: "&cYou cannot teleport to yourself!"
+  self-teleport-actionbar: "&cYou cannot teleport to yourself!"
+
+  tpa-usage: "&e/tpa <player>"
+  tpahere-usage: "&e/tpahere <player>"
+  dtpa-usage: "&e/dtpa reload"
+
+  no-permission: "&cYou don't have permission to use this command."
+  player-only: "&cThis command can only be used by players."
+  command-error: "&cAn error occurred while executing this command."
+
+  teleport-countdown: "&7Teleporting in &b%time%&7 seconds."
+  teleport-countdown-actionbar: "&7Teleporting in &b%time%&7 seconds."
+
+  teleport-cancelled: "&cTeleport has been cancelled!"
+  teleport-cancelled-actionbar: "&cTeleport has been cancelled!"
+
+  teleport-cancelled-movement: "&cTeleport cancelled - you moved too far!"
+  teleport-cancelled-movement-actionbar: "&cTeleport cancelled - you moved too far!"
+
+  teleport-success: "&aTeleported successfully!"
+  teleport-success-actionbar: "&aTeleported successfully!"
+
+  teleport-failed: "&cTeleport failed - try again."
+  teleport-failed-actionbar: "&cTeleport failed - try again."
+
+  teleport-unsafe: "&cCould not find a safe location to teleport to!"
+  teleport-unsafe-actionbar: "&cCould not find a safe location to teleport to!"
+
+  no-requests-found: "&cDoes not have any teleport requests."
+  no-requests-found-actionbar: "&cDoes not have any teleport requests."
+
+  accepted-teleport: "&7You accepted this teleport."
+  accepted-teleport-actionbar: "&7You accepted this teleport."
+
+  request-accepted: "&7Your teleport request has been accepted."
+  request-accepted-actionbar: "&7Your teleport request has been accepted."
+
+  teleport-to-you: "&a%player% has teleported to you."
+  teleport-to-you-actionbar: "&a%player% has teleported to you."
+
+  non-valid-request: "&cTeleport request doesn''t exist or has expired."
+  non-valid-request-actionbar: "&cTeleport request doesn''t exist or has expired."
+
+  # Chú ý: Đã sửa lại định dạng multiline chuẩn YAML cho plugin đọc được
+  receive-request: |-
+    &b%player% sent you a tpa request.
+    <clickable>&b[CLICK TO ACCEPT] &7or type &b/tpaccept %player%
+    &cThis teleport request might be a tp trap.
+  receive-request-actionbar: "&b%player% sent you a tpa request."
+
+  receive-here-request: |-
+    &b%player% sent you a tphere request.
+    <clickable>&b[CLICK TO ACCEPT] &7or type &b/tpaccept %player%
+    &cThis teleport request might be a tp trap.
+  receive-here-request-actionbar: "&b%player% sent you a tphere request."
+
+  sent-request: "&7You sent &b%player%&7 a teleport request. &cThis teleport request might be a tp trap."
+  sent-request-actionbar: "&7You sent &b%player%&7 a teleport request."
+
+  sent-here-request: "&7You sent &b%player%&7 a tphere request."
+  sent-here-request-actionbar: "&7You sent &b%player%&7 a tphere request."
+
+  cancelled-request: "&cYou successfully declined %player% request."
+  cancelled-request-actionbar: "&cYou successfully declined %player% request."
+
+  cancelled-request-sender: "&c%player% has declined your teleport request."
+  cancelled-request-sender-actionbar: "&c%player% has declined your teleport request."
+
+  already-sent-request: "&cYou have already sent a request to &e%player%&c."
+  already-sent-request-actionbar: "&cYou have already sent a request to &e%player%&c."
+
+  tpa-toggle-on: "&aYou're now accepting tpa requests. &7(/tpaheretoggle for tphere)"
+  tpa-toggle-on-actionbar: "&aYou're now accepting tpa requests."
+
+  tpa-toggle-off: "&aYou're no longer accepting tpa requests. &7(/tpaheretoggle for tphere)"
+  tpa-toggle-off-actionbar: "&aYou're no longer accepting tpa requests."
+
+  tpa-here-toggle-on: "&aYou're now accepting tphere requests."
+  tpa-here-toggle-on-actionbar: "&aYou're now accepting tphere requests."
+
+  tpa-here-toggle-off: "&aYou're no longer accepting tphere requests."
+  tpa-here-toggle-off-actionbar: "&aYou're no longer accepting tphere requests."
+
+  block-tpa-request: "&cThat user is not accepting tpa requests."
+  block-tpa-request-actionbar: "&cThat user is not accepting tpa requests."
+
+  block-tphere-request: "&cThat user is not accepting tphere requests."
+  block-tphere-request-actionbar: "&cThat user is not accepting tphere requests."
+
+  gui-toggle-on: "&7You have toggled the TPA GUI to &a&lENABLED&7."
+  gui-toggle-on-actionbar: "&7You have toggled the TPA GUI to &a&lENABLED&7."
+
+  gui-toggle-off: "&7You have toggled the TPA GUI to &c&lDISABLED&7."
+  gui-toggle-off-actionbar: "&7You have toggled the TPA GUI to &c&lDISABLED&7."
+
+  tp-auto-on: "&7You turned on tpauto."
+
+  tp-auto-off: "&7You turned off tpauto."
+  tp-auto-off-actionbar: "&7You turned off tpauto."
+
+  tp-auto-on-persistent: "&#09FF00You have tpauto on."
+  tp-auto-accepted: "&a✓ Auto-accepted teleport request from %player%"
+
+  request-cooldown: "&cYou're on cooldown for sending requests to this player."
+  request-cooldown-actionbar: "&cYou're on cooldown for sending requests to this player."
+
+  request-limit: "&cYou've reached your daily limit for sending requests to this player."
+  request-limit-actionbar: "&cYou've reached your daily limit for sending requests to this player."
+
+  request-expired: "&cYour teleport request to &e%player% &chas expired."
+  request-expired-actionbar: "&cYour teleport request to &e%player% &chas expired."
+
+  cancel-requests: "&cYou've cancelled all of your TPA requests."
+  cancel-requests-actionbar: "&cYou've cancelled all of your TPA requests."
+
+  cancel-requests-failed: "&cYou did not make any TPA requests to cancel."
+  cancel-requests-failed-actionbar: "&cYou did not make any TPA requests to cancel."
+
+  teleport-cancelled-flying: "&cTeleport cancelled: The destination player started flying or using Elytra!"
+  teleport-cancelled-flying-actionbar: "&cTeleport cancelled: Destination unsafe!"
+
+  teleport-flying-warning: "&cA teleport to you was cancelled because you started flying!"
+  teleport-flying-warning-actionbar: "&cTeleport to you cancelled - don't fly during teleports!"
+
+  claim-no-permission: "&cYou don't have permission to teleport to that claim! &7(Owner: &f%owner%&7)"
+  claim-no-permission-actionbar: "&cNo permission to teleport to claim!"
+
+  claim-no-permission-wilderness: "&cYou don't have permission to teleport to wilderness areas!"
+  claim-no-permission-wilderness-actionbar: "&cNo permission to teleport to wilderness!"
+
+  teleport-denied-claim: "&cTeleport denied - destination is in a protected claim!"
+  teleport-denied-claim-actionbar: "&cTeleport denied - protected claim!"
+
+  reload-success: "&aConfiguration reloaded successfully in %ms%ms."
+  reload-success-actionbar: "&aConfiguration reloaded successfully in %ms%ms."
+
+  blacklisted-world-sender: "&cYou cannot send TPA requests from a blacklisted world!"
+  blacklisted-world-sender-actionbar: "&cCannot send TPA from blacklisted world!"
+
+  blacklisted-world-target: "&cYou cannot send TPA requests to players in blacklisted worlds!"
+  blacklisted-world-target-actionbar: "&cCannot send TPA to blacklisted world!"
+
+  blacklisted-world-accept: "&cYou cannot accept TPA requests while in a blacklisted world!"
+  blacklisted-world-accept-actionbar: "&cCannot accept TPA in blacklisted world!"
+
+  blacklisted-world-requester: "&cCannot accept TPA request - requester is in a blacklisted world!"
+  blacklisted-world-requester-actionbar: "&cCannot accept - requester in blacklisted world!"
