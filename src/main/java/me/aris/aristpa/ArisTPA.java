@@ -35,7 +35,6 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player p)) return true;
-
         switch (cmd.getName().toLowerCase()) {
             case "tpa" -> handleReq(p, args, false);
             case "tpahere" -> handleReq(p, args, true);
@@ -44,9 +43,8 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
             case "tpauto" -> toggleAuto(p);
             case "dtpa" -> {
                 if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
-                    long start = System.currentTimeMillis();
                     reloadConfig();
-                    sendMsg(p, "reload-success", "%ms%", String.valueOf(System.currentTimeMillis() - start));
+                    sendMsg(p, "reload-success", "%ms%", "0");
                 }
             }
         }
@@ -56,19 +54,16 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
     private void handleReq(Player p, String[] args, boolean here) {
         if (args.length == 0) { sendMsg(p, here ? "tpahere-usage" : "tpa-usage"); return; }
         Player target = Bukkit.getPlayer(args[0]);
-        
         if (target == null) { sendMsg(p, "player-not-found", "%player%", args[0]); return; }
         if (target == p) { sendMsg(p, "self-teleport"); return; }
-
         if (tpAuto.contains(target.getUniqueId())) {
             sendMsg(target, "tp-auto-accepted", "%player%", p.getName());
             startTeleport(here ? target : p, here ? p : target);
         } else {
             if (here) tpaHereReq.put(target.getUniqueId(), p.getUniqueId());
             else tpaReq.put(target.getUniqueId(), p.getUniqueId());
-            
             sendMsg(p, here ? "sent-here-request" : "sent-request", "%player%", target.getName());
-            sendMsg(target, here ? "receive-request", "%player%", p.getName());
+            sendMsg(target, here ? "receive-here-request" : "receive-request", "%player%", p.getName());
         }
     }
 
@@ -76,7 +71,6 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
         UUID sID = tpaReq.remove(p.getUniqueId());
         boolean isHere = false;
         if (sID == null) { sID = tpaHereReq.remove(p.getUniqueId()); isHere = true; }
-        
         if (sID == null) { sendMsg(p, "no-requests-found"); return; }
         Player s = Bukkit.getPlayer(sID);
         if (s != null) {
@@ -93,8 +87,6 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
             sendMsg(p, "cancelled-request", "%player%", Bukkit.getOfflinePlayer(sID).getName());
             Player s = Bukkit.getPlayer(sID);
             if (s != null) sendMsg(s, "cancelled-request-sender", "%player%", p.getName());
-        } else {
-            sendMsg(p, "no-requests-found");
         }
     }
 
@@ -107,55 +99,42 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
         int time = getConfig().getInt("teleport.countdown", 5);
         Location startPos = who.getLocation().clone();
         double range = getConfig().getDouble("teleport.allowed-walk-range", 0.1);
-
         new TimerTask() {
             int count = time;
             @Override
             public void run() {
-                if (!who.isOnline() || !to.isOnline()) { this.cancel(); return; }
+                if (!who.isOnline() || !to.isOnline()) { cancel(); return; }
                 if (who.getLocation().distance(startPos) > range) {
                     sendMsg(who, "teleport-cancelled-movement");
                     who.playSound(who.getLocation(), Sound.valueOf(getConfig().getString("sounds.cancel-sound")), 1, 1);
-                    this.cancel(); return;
+                    cancel(); return;
                 }
                 if (count > 0) {
                     sendMsg(who, "teleport-countdown", "%time%", String.valueOf(count));
                     who.playSound(who.getLocation(), Sound.valueOf(getConfig().getString("sounds.countdown-tick")), 1, 1);
                     count--;
                 } else {
-                    who.getScheduler().run(ArisTPA.this, (t) -> who.teleport(to.getLocation()), null);
+                    Bukkit.getRegionScheduler().run(ArisTPA.this, who.getLocation(), (task) -> who.teleport(to.getLocation()));
                     sendMsg(who, "teleport-success");
                     who.playSound(who.getLocation(), Sound.valueOf(getConfig().getString("sounds.teleport-success")), 1, 1);
-                    this.cancel();
+                    cancel();
                 }
             }
-        }.runTimer(who, 0L, 20L);
+        }.runTimer(who, time);
     }
 
     private abstract class TimerTask {
-        private org.bukkit.scheduler.BukkitTask pTask;
-        private Object fTask; 
-
-        public void runTimer(Player p, long d, long pr) {
-            try {
-                fTask = p.getScheduler().runAtFixedRate(ArisTPA.this, (t) -> run(), null, d, pr);
-            } catch (Throwable e) {
-                pTask = Bukkit.getScheduler().runTaskTimer(ArisTPA.this, this::run, d, pr);
-            }
+        private org.bukkit.scheduler.BukkitTask task;
+        public void runTimer(Player p, int time) {
+            task = Bukkit.getScheduler().runTaskTimer(ArisTPA.this, this::run, 0L, 20L);
         }
-
-        public void cancel() {
-            if (fTask != null) ((io.papermc.paper.threadedregionscheduler.ScheduledTask) fTask).cancel();
-            if (pTask != null) pTask.cancel();
-        }
-
+        public void cancel() { if (task != null) task.cancel(); }
         public abstract void run();
     }
 
     public void sendMsg(Player p, String key, String... rep) {
         String chat = getConfig().getString("messages." + key);
         String bar = getConfig().getString("messages." + key + "-actionbar");
-        
         if (chat != null) {
             for (int i = 0; i < rep.length; i += 2) chat = chat.replace(rep[i], rep[i+1]);
             chat = ChatColor.translateAlternateColorCodes('&', chat);
@@ -167,13 +146,11 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
                 msg.addExtra(click);
                 if (parts.length > 1) msg.addExtra(new TextComponent(parts[1]));
                 p.spigot().sendMessage(msg);
-            } else {
-                p.sendMessage(chat);
-            }
+            } else p.sendMessage(chat);
         }
         if (bar != null) {
             for (int i = 0; i < rep.length; i += 2) bar = bar.replace(rep[i], rep[i+1]);
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.translateAlternateColorCodes('&', bar)));
         }
     }
-        }
+                }
