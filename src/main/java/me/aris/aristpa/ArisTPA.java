@@ -68,7 +68,7 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
             else tpaReq.put(target.getUniqueId(), p.getUniqueId());
             
             sendMsg(p, here ? "sent-here-request" : "sent-request", "%player%", target.getName());
-            sendMsg(target, here ? "receive-here-request" : "receive-request", "%player%", p.getName());
+            sendMsg(target, here ? "receive-request", "%player%", p.getName());
         }
     }
 
@@ -134,12 +134,21 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
 
     private abstract class TimerTask {
         private org.bukkit.scheduler.BukkitTask pTask;
-        private io.papermc.paper.threadedregionscheduler.ScheduledTask fTask;
+        private Object fTask; 
+
         public void runTimer(Player p, long d, long pr) {
-            try { fTask = p.getScheduler().runAtFixedRate(ArisTPA.this, (t) -> run(), null, d, pr); }
-            catch (Throwable e) { pTask = Bukkit.getScheduler().runTaskTimer(ArisTPA.this, this::run, d, pr); }
+            try {
+                fTask = p.getScheduler().runAtFixedRate(ArisTPA.this, (t) -> run(), null, d, pr);
+            } catch (Throwable e) {
+                pTask = Bukkit.getScheduler().runTaskTimer(ArisTPA.this, this::run, d, pr);
+            }
         }
-        public void cancel() { if (fTask != null) fTask.cancel(); if (pTask != null) pTask.cancel(); }
+
+        public void cancel() {
+            if (fTask != null) ((io.papermc.paper.threadedregionscheduler.ScheduledTask) fTask).cancel();
+            if (pTask != null) pTask.cancel();
+        }
+
         public abstract void run();
     }
 
@@ -167,4 +176,4 @@ public class ArisTPA extends JavaPlugin implements CommandExecutor {
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.translateAlternateColorCodes('&', bar)));
         }
     }
-    }
+        }
