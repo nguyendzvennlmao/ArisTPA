@@ -1,0 +1,35 @@
+name: ArisTPA
+version: 1.0
+main: me.aris.aristpa.ArisTPA
+api-version: 1.20
+author: Aris
+folia-supported: true
+
+commands:
+  tpa:
+    description: "Gửi yêu cầu dịch chuyển đến người chơi khác."
+    usage: "/tpa <người_chơi>"
+  tpahere:
+    description: "Yêu cầu một người chơi dịch chuyển đến vị trí của bạn."
+    usage: "/tpahere <người_chơi>"
+  tpaccept:
+    description: "Chấp nhận yêu cầu dịch chuyển đang chờ."
+    usage: "/tpaccept"
+  tpdeny:
+    description: "Từ chối yêu cầu dịch chuyển đang chờ."
+    usage: "/tpdeny"
+  tpacancel:
+    description: "Hủy yêu cầu dịch chuyển mà bạn đã gửi."
+    usage: "/tpacancel"
+  tpauto:
+    description: "Bật/Tắt chế độ tự động chấp nhận mọi yêu cầu dịch chuyển."
+    usage: "/tpauto"
+  dtpa:
+    description: "Lệnh quản trị để tải lại cấu hình plugin."
+    usage: "/dtpa reload"
+    permission: aristpa.admin
+
+permissions:
+  aristpa.admin:
+    description: "Cho phép sử dụng lệnh reload hệ thống."
+    default: op
