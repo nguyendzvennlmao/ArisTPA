@@ -8,6 +8,7 @@ import me.aris.aristpa.managers.MessageManager;
 import me.aris.aristpa.managers.SoundManager;
 import me.aris.aristpa.managers.TPAManager;
 import me.aris.aristpa.listeners.TeleportListener;
+import me.aris.aristpa.teleport.TeleportExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ArisTPA extends JavaPlugin {
@@ -16,6 +17,7 @@ public class ArisTPA extends JavaPlugin {
     private MessageManager messageManager;
     private SoundManager soundManager;
     private TPAManager tpaManager;
+    private TeleportExecutor teleportExecutor;
     private TPAGUI tpaGUI;
     private TPAHereGUI tpaHereGUI;
 
@@ -33,6 +35,7 @@ public class ArisTPA extends JavaPlugin {
         messageManager = new MessageManager(this);
         soundManager = new SoundManager(this);
         tpaManager = new TPAManager(this);
+        teleportExecutor = new TeleportExecutor(this);
         tpaGUI = new TPAGUI(this);
         tpaHereGUI = new TPAHereGUI(this);
         
@@ -76,6 +79,7 @@ public class ArisTPA extends JavaPlugin {
     public MessageManager getMessageManager() { return messageManager; }
     public SoundManager getSoundManager() { return soundManager; }
     public TPAManager getTPAManager() { return tpaManager; }
+    public TeleportExecutor getTeleportExecutor() { return teleportExecutor; }
     public TPAGUI getTPAGUI() { return tpaGUI; }
     public TPAHereGUI getTPAHereGUI() { return tpaHereGUI; }
-  }
+            }
