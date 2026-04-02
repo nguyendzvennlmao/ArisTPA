@@ -3,8 +3,8 @@ package me.aris.aristpa.managers;
 import me.aris.aristpa.ArisTPA;
 import me.aris.aristpa.models.TeleportRequest;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -18,6 +18,7 @@ public class TPAManager {
     private Map<UUID, Boolean> tpAuto;
     private Map<UUID, Boolean> guiEnabled;
     private Map<UUID, Boolean> guiHereEnabled;
+    private Map<UUID, Integer> persistentTaskIds;
     private ScheduledExecutorService scheduler;
     private String lastRequestDay;
     
@@ -31,6 +32,7 @@ public class TPAManager {
         this.tpAuto = new ConcurrentHashMap<>();
         this.guiEnabled = new ConcurrentHashMap<>();
         this.guiHereEnabled = new ConcurrentHashMap<>();
+        this.persistentTaskIds = new ConcurrentHashMap<>();
         this.scheduler = Executors.newScheduledThreadPool(plugin.getConfigManager().getThreadPoolSize());
         this.lastRequestDay = getCurrentDay();
     }
@@ -169,6 +171,37 @@ public class TPAManager {
     
     public void setTPAutoEnabled(Player player, boolean enabled) {
         tpAuto.put(player.getUniqueId(), enabled);
+        
+        if (enabled) {
+            startPersistentActionBar(player);
+        } else {
+            stopPersistentActionBar(player);
+        }
+    }
+    
+    private void startPersistentActionBar(Player player) {
+        stopPersistentActionBar(player);
+        
+        int taskId = new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!player.isOnline() || !isTPAutoEnabled(player)) {
+                    cancel();
+                    persistentTaskIds.remove(player.getUniqueId());
+                    return;
+                }
+                plugin.getMessageManager().sendMessage(player, "tp-auto-on-persistent");
+            }
+        }.runTaskTimer(plugin, 0L, 100L).getTaskId();
+        
+        persistentTaskIds.put(player.getUniqueId(), taskId);
+    }
+    
+    private void stopPersistentActionBar(Player player) {
+        Integer taskId = persistentTaskIds.remove(player.getUniqueId());
+        if (taskId != null) {
+            Bukkit.getScheduler().cancelTask(taskId);
+        }
     }
     
     public boolean isGUIEnabled(Player player) {
@@ -188,6 +221,12 @@ public class TPAManager {
     }
     
     public void shutdown() {
+        for (Integer taskId : persistentTaskIds.values()) {
+            if (taskId != null) {
+                Bukkit.getScheduler().cancelTask(taskId);
+            }
+        }
+        persistentTaskIds.clear();
         scheduler.shutdown();
         try {
             if (!scheduler.awaitTermination(5, TimeUnit.SECONDS)) {
@@ -197,4 +236,4 @@ public class TPAManager {
             scheduler.shutdownNow();
         }
     }
-  }
+    }
