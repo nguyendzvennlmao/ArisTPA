@@ -1,11 +1,61 @@
+# ===============================
+# sounds.yml
+# ===============================
 sounds:
+  # Sound when request is sent
   request-sent: ENTITY_EXPERIENCE_ORB_PICKUP
+
+  # Sound when request is received
   request-received: BLOCK_NOTE_BLOCK_PLING
+
+  # Sound during teleport countdown
   countdown: ENTITY_ENDERMAN_TELEPORT
+
+  # Sound on successful teleport
   teleport: ENTITY_ENDERMAN_TELEPORT
+
+  # Sound when clicking info items
   info-click: BLOCK_TRIPWIRE_CLICK_ON
+  
+  # Sound on errors
   error: ENTITY_VILLAGER_NO
+
+  # Sound when accepting teleport request
   accept: ENTITY_PLAYER_LEVELUP
+
+  # Sound when cancelling/denying teleport request
   cancel: ENTITY_ITEM_BREAK
+
+  # Sound when enabling TPAuto
   tpauto-enable: BLOCK_BEACON_ACTIVATE
+
+  # Sound when disabling TPAuto
   tpauto-disable: BLOCK_BEACON_DEACTIVATE
+
+  # Sound when toggling TPA (accept requests)
+  tpa-toggle-on: BLOCK_NOTE_BLOCK_PLING
+  tpa-toggle-off: BLOCK_NOTE_BLOCK_BASS
+
+  # Sound when toggling TPAHere (accept tphere requests)
+  tpahere-toggle-on: BLOCK_NOTE_BLOCK_PLING
+  tpahere-toggle-off: BLOCK_NOTE_BLOCK_BASS
+
+  # Sound when toggling GUI
+  gui-toggle-on: BLOCK_NOTE_BLOCK_PLING
+  gui-toggle-off: BLOCK_NOTE_BLOCK_BASS
+
+  # Sound when request is denied
+  request-denied: ENTITY_VILLAGER_NO
+
+  # Sound when request expires
+  request-expired: ENTITY_ITEM_BREAK
+
+  # Sound when teleport is cancelled
+  teleport-cancel: ENTITY_ENDERMAN_TELEPORT
+
+  # Sound when player is in blacklisted world
+  blacklisted-world: BLOCK_NOTE_BLOCK_BASS
+
+  # Sound when reload config
+  reload-success: ENTITY_PLAYER_LEVELUP
+  reload-fail: ENTITY_VILLAGER_NO
