@@ -105,4 +105,58 @@ public class TPAGUI implements Listener {
         meta.setDisplayName(name);
         meta.setLore(lore);
         head.setItemMeta(meta);
-       
+        return head;
+    }
+    
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (!(event.getWhoClicked() instanceof Player)) return;
+        Player player = (Player) event.getWhoClicked();
+        String title = event.getView().getTitle();
+        
+        if (title.equals("§8Confirm Request") || title.equals("§8Accept Request")) {
+            event.setCancelled(true);
+            
+            if (event.getCurrentItem() == null) return;
+            
+            if (title.equals("§8Confirm Request")) {
+                if (event.getSlot() == 16) {
+                    player.closeInventory();
+                    player.performCommand("tpa " + getTargetNameFromGUI(event));
+                } else if (event.getSlot() == 10) {
+                    player.closeInventory();
+                }
+            } else if (title.equals("§8Accept Request")) {
+                if (event.getSlot() == 16) {
+                    player.closeInventory();
+                    player.performCommand("tpaccept " + getSenderNameFromGUI(event));
+                } else if (event.getSlot() == 10) {
+                    player.closeInventory();
+                    player.performCommand("tpdeny " + getSenderNameFromGUI(event));
+                }
+            }
+        }
+    }
+    
+    private String getTargetNameFromGUI(InventoryClickEvent event) {
+        ItemStack item = event.getInventory().getItem(13);
+        if (item != null && item.hasItemMeta() && item.getItemMeta().hasLore()) {
+            List<String> lore = item.getItemMeta().getLore();
+            if (lore != null && !lore.isEmpty()) {
+                return lore.get(0).replace("§f", "");
+            }
+        }
+        return "";
+    }
+    
+    private String getSenderNameFromGUI(InventoryClickEvent event) {
+        ItemStack item = event.getInventory().getItem(13);
+        if (item != null && item.hasItemMeta() && item.getItemMeta().hasLore()) {
+            List<String> lore = item.getItemMeta().getLore();
+            if (lore != null && !lore.isEmpty()) {
+                return lore.get(0).replace("§f", "");
+            }
+        }
+        return "";
+    }
+                                               }
