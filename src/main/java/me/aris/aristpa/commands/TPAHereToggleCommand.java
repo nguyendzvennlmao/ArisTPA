@@ -32,10 +32,12 @@ public class TPAHereToggleCommand implements CommandExecutor {
         
         if (!current) {
             plugin.getMessageManager().sendMessage(player, "tpa-here-toggle-on");
+            plugin.getSoundManager().playTPAHereToggleOn(player);
         } else {
             plugin.getMessageManager().sendMessage(player, "tpa-here-toggle-off");
+            plugin.getSoundManager().playTPAHereToggleOff(player);
         }
         
         return true;
     }
-          }
+}
