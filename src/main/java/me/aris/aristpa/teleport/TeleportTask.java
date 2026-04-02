@@ -1,10 +1,10 @@
 package me.aris.aristpa.teleport;
 
 import me.aris.aristpa.ArisTPA;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 public class TeleportTask {
     private ArisTPA plugin;
@@ -103,22 +103,12 @@ public class TeleportTask {
     
     public void cancel() {
         cancelled = true;
-        BukkitRunnable runnable = new BukkitRunnable() {
-            @Override
-            public void run() {
-                BukkitRunnable task = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (Bukkit.getScheduler().isCurrentlyRunning(taskId)) {
-                            Bukkit.getScheduler().cancelTask(taskId);
-                        }
-                    }
-                };
-                task.runTask(plugin);
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            if (Bukkit.getScheduler().isCurrentlyRunning(taskId)) {
+                Bukkit.getScheduler().cancelTask(taskId);
             }
-        };
-        runnable.runTask(plugin);
+        });
     }
     
     public boolean isCancelled() { return cancelled; }
-          }
+            }
