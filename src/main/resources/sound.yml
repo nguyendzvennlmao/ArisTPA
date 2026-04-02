@@ -1,0 +1,11 @@
+sounds:
+  request-sent: ENTITY_EXPERIENCE_ORB_PICKUP
+  request-received: BLOCK_NOTE_BLOCK_PLING
+  countdown: ENTITY_ENDERMAN_TELEPORT
+  teleport: ENTITY_ENDERMAN_TELEPORT
+  info-click: BLOCK_TRIPWIRE_CLICK_ON
+  error: ENTITY_VILLAGER_NO
+  accept: ENTITY_PLAYER_LEVELUP
+  cancel: ENTITY_ITEM_BREAK
+  tpauto-enable: BLOCK_BEACON_ACTIVATE
+  tpauto-disable: BLOCK_BEACON_DEACTIVATE
