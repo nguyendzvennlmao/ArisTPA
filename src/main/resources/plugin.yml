@@ -1,0 +1,78 @@
+name: ArisTPA
+version: ${project.version}
+main: me.aris.aristpa.ArisTPA
+api-version: "1.20"
+folia-supported: true
+description: Teleport request plugin with GUI support
+author: Aris
+
+commands:
+  tpa:
+    description: Request to teleport to a player
+    usage: /tpa <player>
+    aliases: []
+  tpahere:
+    description: Request a player to teleport to you
+    usage: /tpahere <player>
+    aliases: [tphere]
+  tpaccept:
+    description: Accept a teleport request
+    usage: /tpaccept [player]
+    aliases: [tpyes]
+  tpdeny:
+    description: Deny a teleport request
+    usage: /tpdeny [player]
+    aliases: [tpno]
+  tpacancel:
+    description: Cancel your outgoing teleport requests
+    usage: /tpacancel
+    aliases: []
+  tpatoggle:
+    description: Toggle accepting teleport requests
+    usage: /tpatoggle
+    aliases: []
+  tpaheretoggle:
+    description: Toggle accepting teleport-here requests
+    usage: /tpaheretoggle
+    aliases: []
+  tpauto:
+    description: Toggle auto-accepting teleport requests
+    usage: /tpauto
+    aliases: []
+  dtpa:
+    description: Admin commands for ArisTPA
+    usage: /dtpa reload
+    aliases: []
+    permission: aristpa.admin
+
+permissions:
+  aristpa.use:
+    description: Allows using TPA commands
+    default: true
+  aristpa.tpa:
+    description: Allows using /tpa
+    default: true
+  aristpa.tpahere:
+    description: Allows using /tpahere
+    default: true
+  aristpa.tpaccept:
+    description: Allows using /tpaccept
+    default: true
+  aristpa.tpdeny:
+    description: Allows using /tpdeny
+    default: true
+  aristpa.tpacancel:
+    description: Allows using /tpacancel
+    default: true
+  aristpa.tpatoggle:
+    description: Allows using /tpatoggle
+    default: true
+  aristpa.tpaheretoggle:
+    description: Allows using /tpaheretoggle
+    default: true
+  aristpa.tpauto:
+    description: Allows using /tpauto
+    default: true
+  aristpa.admin:
+    description: Allows using admin commands
+    default: op
