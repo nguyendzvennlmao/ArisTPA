@@ -1,0 +1,146 @@
+messages:
+  prefix: ""
+  
+  player-not-found: "&cNgười chơi &e%player% &ckhông online!"
+  player-not-found-actionbar: "&cNgười chơi &e%player% &ckhông online!"
+
+  self-teleport: "&cBạn không thể teleport đến chính mình!"
+  self-teleport-actionbar: "&cBạn không thể teleport đến chính mình!"
+
+  tpa-usage: "&e/tpa <người chơi>"
+  tpahere-usage: "&e/tpahere <người chơi>"
+  dtpa-usage: "&e/dtpa reload"
+
+  no-permission: "&cBạn không có quyền sử dụng lệnh này."
+  player-only: "&cLệnh này chỉ dành cho người chơi."
+  command-error: "&cĐã xảy ra lỗi khi thực thi lệnh."
+
+  teleport-countdown: "&7Đang teleport sau &b%time%&7 giây."
+  teleport-countdown-actionbar: "&7Đang teleport sau &b%time%&7 giây."
+
+  teleport-cancelled: "&cĐã hủy teleport!"
+  teleport-cancelled-actionbar: "&cĐã hủy teleport!"
+
+  teleport-cancelled-movement: "&cĐã hủy teleport - bạn đã di chuyển quá xa!"
+  teleport-cancelled-movement-actionbar: "&cĐã hủy teleport - bạn đã di chuyển quá xa!"
+
+  teleport-success: "&aTeleport thành công!"
+  teleport-success-actionbar: "&aTeleport thành công!"
+
+  teleport-failed: "&cTeleport thất bại - hãy thử lại."
+  teleport-failed-actionbar: "&cTeleport thất bại - hãy thử lại."
+
+  teleport-unsafe: "&cKhông tìm thấy vị trí an toàn để teleport!"
+  teleport-unsafe-actionbar: "&cKhông tìm thấy vị trí an toàn để teleport!"
+
+  no-requests-found: "&cBạn không có yêu cầu teleport nào."
+  no-requests-found-actionbar: "&cBạn không có yêu cầu teleport nào."
+
+  accepted-teleport: "&7Bạn đã chấp nhận teleport này."
+  accepted-teleport-actionbar: "&7Bạn đã chấp nhận teleport này."
+
+  request-accepted: "&7Yêu cầu teleport của bạn đã được chấp nhận."
+  request-accepted-actionbar: "&7Yêu cầu teleport của bạn đã được chấp nhận."
+
+  teleport-to-you: "&a%player% đã teleport đến bạn."
+  teleport-to-you-actionbar: "&a%player% đã teleport đến bạn."
+
+  non-valid-request: "&cYêu cầu teleport không tồn tại hoặc đã hết hạn."
+  non-valid-request-actionbar: "&cYêu cầu teleport không tồn tại hoặc đã hết hạn."
+
+  receive-request: "&b%player% đã gửi yêu cầu tpa đến bạn.\n|<clickable>&b[NHẤP ĐỂ CHẤP NHẬN] &7hoặc gõ &b/tpaccept %player%\n|&cYêu cầu teleport này có thể là bẫy."
+  receive-request-actionbar: "&b%player% đã gửi yêu cầu tpa đến bạn."
+
+  receive-here-request: "&b%player% đã gửi yêu cầu tphere đến bạn.\n|<clickable>&b[NHẤP ĐỂ CHẤP NHẬN] &7hoặc gõ &b/tpaccept %player%\n|&cYêu cầu teleport này có thể là bẫy."
+  receive-here-request-actionbar: "&b%player% đã gửi yêu cầu tphere đến bạn."
+
+  sent-request: "&7Bạn đã gửi yêu cầu teleport đến &b%player%&7. &cYêu cầu này có thể là bẫy."
+  sent-request-actionbar: "&7Bạn đã gửi yêu cầu teleport đến &b%player%&7."
+
+  sent-here-request: "&7Bạn đã gửi yêu cầu tphere đến &b%player%&7."
+  sent-here-request-actionbar: "&7Bạn đã gửi yêu cầu tphere đến &b%player%&7."
+
+  cancelled-request: "&cBạn đã từ chối yêu cầu của %player%."
+  cancelled-request-actionbar: "&cBạn đã từ chối yêu cầu của %player%."
+
+  cancelled-request-sender: "&c%player% đã từ chối yêu cầu teleport của bạn."
+  cancelled-request-sender-actionbar: "&c%player% đã từ chối yêu cầu teleport của bạn."
+
+  already-sent-request: "&cBạn đã gửi yêu cầu đến &e%player%&c rồi."
+  already-sent-request-actionbar: "&cBạn đã gửi yêu cầu đến &e%player%&c rồi."
+
+  tpa-toggle-on: "&aBạn đang bật chấp nhận yêu cầu tpa. &7(/tpaheretoggle để bật/tắt tphere)"
+  tpa-toggle-on-actionbar: "&aBạn đang bật chấp nhận yêu cầu tpa."
+
+  tpa-toggle-off: "&aBạn đã tắt chấp nhận yêu cầu tpa. &7(/tpaheretoggle để bật/tắt tphere)"
+  tpa-toggle-off-actionbar: "&aBạn đã tắt chấp nhận yêu cầu tpa."
+
+  tpa-here-toggle-on: "&aBạn đang bật chấp nhận yêu cầu tphere."
+  tpa-here-toggle-on-actionbar: "&aBạn đang bật chấp nhận yêu cầu tphere."
+
+  tpa-here-toggle-off: "&aBạn đã tắt chấp nhận yêu cầu tphere."
+  tpa-here-toggle-off-actionbar: "&aBạn đã tắt chấp nhận yêu cầu tphere."
+
+  block-tpa-request: "&cNgười chơi đó không bật chấp nhận yêu cầu tpa."
+  block-tpa-request-actionbar: "&cNgười chơi đó không bật chấp nhận yêu cầu tpa."
+
+  block-tphere-request: "&cNgười chơi đó không bật chấp nhận yêu cầu tphere."
+  block-tphere-request-actionbar: "&cNgười chơi đó không bật chấp nhận yêu cầu tphere."
+
+  gui-toggle-on: "&7Bạn đã bật giao diện TPA GUI &a&lBẬT&7."
+  gui-toggle-on-actionbar: "&7Bạn đã bật giao diện TPA GUI &a&lBẬT&7."
+
+  gui-toggle-off: "&7Bạn đã tắt giao diện TPA GUI &c&lTẮT&7."
+  gui-toggle-off-actionbar: "&7Bạn đã tắt giao diện TPA GUI &c&lTẮT&7."
+
+  tp-auto-on: "&7Bạn đã bật tpauto."
+  tp-auto-off: "&7Bạn đã tắt tpauto."
+  tp-auto-off-actionbar: "&7Bạn đã tắt tpauto."
+
+  tp-auto-on-persistent: "&#09FF00Bạn đang bật tpauto."
+  tp-auto-accepted: "&a✓ Đã tự động chấp nhận yêu cầu teleport từ %player%"
+
+  request-cooldown: "&cBạn đang trong thời gian chờ gửi yêu cầu đến người chơi này."
+  request-cooldown-actionbar: "&cBạn đang trong thời gian chờ gửi yêu cầu đến người chơi này."
+
+  request-limit: "&cBạn đã đạt giới hạn yêu cầu hàng ngày cho người chơi này."
+  request-limit-actionbar: "&cBạn đã đạt giới hạn yêu cầu hàng ngày cho người chơi này."
+
+  request-expired: "&cYêu cầu teleport của bạn đến &e%player% &cđã hết hạn."
+  request-expired-actionbar: "&cYêu cầu teleport của bạn đến &e%player% &cđã hết hạn."
+
+  cancel-requests: "&cBạn đã hủy tất cả yêu cầu TPA của mình."
+  cancel-requests-actionbar: "&cBạn đã hủy tất cả yêu cầu TPA của mình."
+
+  cancel-requests-failed: "&cBạn không có yêu cầu TPA nào để hủy."
+  cancel-requests-failed-actionbar: "&cBạn không có yêu cầu TPA nào để hủy."
+
+  teleport-cancelled-flying: "&cĐã hủy teleport: Người chơi đích đang bay hoặc dùng Elytra!"
+  teleport-cancelled-flying-actionbar: "&cĐã hủy teleport: Điểm đến không an toàn!"
+
+  teleport-flying-warning: "&cTeleport đến bạn đã bị hủy vì bạn đang bay!"
+  teleport-flying-warning-actionbar: "&cTeleport đến bạn đã bị hủy - đừng bay khi đang teleport!"
+
+  claim-no-permission: "&cBạn không có quyền teleport đến khu đất đó! &7(Chủ sở hữu: &f%owner%&7)"
+  claim-no-permission-actionbar: "&cKhông có quyền teleport đến khu đất đó!"
+
+  claim-no-permission-wilderness: "&cBạn không có quyền teleport đến khu vực hoang dã!"
+  claim-no-permission-wilderness-actionbar: "&cKhông có quyền teleport đến khu vực hoang dã!"
+
+  teleport-denied-claim: "&cTừ chối teleport - điểm đến nằm trong khu đất được bảo vệ!"
+  teleport-denied-claim-actionbar: "&cTừ chối teleport - khu đất được bảo vệ!"
+
+  reload-success: "&aTải lại cấu hình thành công trong %ms%ms."
+  reload-success-actionbar: "&aTải lại cấu hình thành công trong %ms%ms."
+
+  blacklisted-world-sender: "&cBạn không thể gửi yêu cầu TPA từ thế giới bị chặn!"
+  blacklisted-world-sender-actionbar: "&cKhông thể gửi TPA từ thế giới bị chặn!"
+
+  blacklisted-world-target: "&cBạn không thể gửi yêu cầu TPA đến người chơi trong thế giới bị chặn!"
+  blacklisted-world-target-actionbar: "&cKhông thể gửi TPA đến thế giới bị chặn!"
+
+  blacklisted-world-accept: "&cBạn không thể chấp nhận yêu cầu TPA khi đang ở trong thế giới bị chặn!"
+  blacklisted-world-accept-actionbar: "&cKhông thể chấp nhận TPA trong thế giới bị chặn!"
+
+  blacklisted-world-requester: "&cKhông thể chấp nhận yêu cầu TPA - người yêu cầu đang ở thế giới bị chặn!"
+  blacklisted-world-requester-actionbar: "&cKhông thể chấp nhận - người yêu cầu ở thế giới bị chặn!"
