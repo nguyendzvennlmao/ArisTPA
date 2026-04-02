@@ -1,0 +1,43 @@
+teleport:
+  countdown: 5
+  allowed-walk-range: 0
+  safe-teleport: false
+
+request:
+  expiration-time: 120
+  cooldown: 30
+  daily-limit: -1
+
+blacklisted-worlds:
+  enabled: true
+  worlds:
+    - "world_nether"
+    - "world_the_end"
+    - "pvp_world"
+    - "mining_world"
+
+gui:
+  enabled: true
+  command-enabled: false
+
+messages:
+  action-bar-messages: true
+  chat-messages: true
+  use-action-bar-only: false
+
+storage:
+  thread-pool-size: 2
+
+huskclaims:
+  allow-wilderness-teleport: true
+
+override-essentials: true
+
+worlds:
+  world: "Overworld"
+  world_nether: "Nether"
+  world_the_end: "End"
+
+placeholders:
+  ON: "&a&lON"
+  OFF: "&c&lOFF"
