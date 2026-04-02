@@ -32,10 +32,10 @@ public class TPAToggleCommand implements CommandExecutor {
         
         if (!current) {
             plugin.getMessageManager().sendMessage(player, "tpa-toggle-on");
-            plugin.getSoundManager().playTPAutoEnable(player);
+            plugin.getSoundManager().playTPAToggleOn(player);
         } else {
             plugin.getMessageManager().sendMessage(player, "tpa-toggle-off");
-            plugin.getSoundManager().playTPAutoDisable(player);
+            plugin.getSoundManager().playTPAToggleOff(player);
         }
         
         return true;
