@@ -69,4 +69,52 @@ public class SoundManager {
     public void playTPAutoDisable(Player player) {
         if (player != null) player.playSound(player.getLocation(), getSound("tpauto-disable"), 1.0f, 1.0f);
     }
+    
+    public void playTPAToggleOn(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("tpa-toggle-on"), 1.0f, 1.0f);
+    }
+    
+    public void playTPAToggleOff(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("tpa-toggle-off"), 1.0f, 1.0f);
+    }
+    
+    public void playTPAHereToggleOn(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("tpahere-toggle-on"), 1.0f, 1.0f);
+    }
+    
+    public void playTPAHereToggleOff(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("tpahere-toggle-off"), 1.0f, 1.0f);
+    }
+    
+    public void playGUIToggleOn(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("gui-toggle-on"), 1.0f, 1.0f);
+    }
+    
+    public void playGUIToggleOff(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("gui-toggle-off"), 1.0f, 1.0f);
+    }
+    
+    public void playRequestDenied(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("request-denied"), 1.0f, 1.0f);
+    }
+    
+    public void playRequestExpired(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("request-expired"), 1.0f, 1.0f);
+    }
+    
+    public void playTeleportCancel(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("teleport-cancel"), 1.0f, 1.0f);
+    }
+    
+    public void playBlacklistedWorld(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("blacklisted-world"), 1.0f, 1.0f);
+    }
+    
+    public void playReloadSuccess(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("reload-success"), 1.0f, 1.0f);
+    }
+    
+    public void playReloadFail(Player player) {
+        if (player != null) player.playSound(player.getLocation(), getSound("reload-fail"), 1.0f, 1.0f);
+    }
     }
